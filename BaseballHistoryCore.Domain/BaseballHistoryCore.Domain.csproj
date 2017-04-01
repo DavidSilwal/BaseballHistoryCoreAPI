@@ -7,6 +7,12 @@
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="Entities\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Facades\" />
+    <Folder Include="Factories\" />
+    <Folder Include="Services\" />
+    <Folder Include="Predicates\" />
+    <Folder Include="Repositories\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
 

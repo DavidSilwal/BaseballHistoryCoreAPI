@@ -1,5 +1,4 @@
 ﻿//using BaseballHistoryCore.API.Services;
-//using BaseballHistoryCore.Data.DataModels;
 using BaseballHistoryCore.Data.DataModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

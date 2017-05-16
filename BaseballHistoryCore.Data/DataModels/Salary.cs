@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BaseballHistoryCore.Data.DataModels
+﻿namespace BaseballHistoryCore.Data.DataModels
 {
-    public partial class Salary
+    public class Salary
     {
         public string PlayerId { get; set; }
         public string TeamId { get; set; }

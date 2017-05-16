@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BaseballHistoryCore.Data.DataModels
+﻿namespace BaseballHistoryCore.Data.DataModels
 {
-    public partial class HomeGame
+    public class HomeGame
     {
         public string TeamId { get; set; }
         public string LgId { get; set; }

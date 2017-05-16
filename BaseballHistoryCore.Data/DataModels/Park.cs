@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace BaseballHistoryCore.Data.DataModels
 {
-    public partial class Park
+    public class Park
     {
         public Park()
         {

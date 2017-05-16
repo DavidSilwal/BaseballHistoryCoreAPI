@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace BaseballHistoryCore.API.ViewModels
 {
-    public partial class MasterViewModel
+    public class MasterViewModel
     {
         public string PlayerId { get; set; }
         public short? BirthYear { get; set; }
@@ -40,7 +39,7 @@ namespace BaseballHistoryCore.API.ViewModels
         public virtual ICollection<BattingPostViewModel> BattingPost { get; set; }
         public virtual ICollection<CollegePlayingViewModel> CollegePlaying { get; set; }
         public virtual ICollection<FieldingViewModel> Fielding { get; set; }
-        public virtual ICollection<FieldingOFViewModel> FieldingOf { get; set; }
+        public virtual ICollection<FieldingOfViewModel> FieldingOf { get; set; }
         public virtual ICollection<FieldingOFsplitViewModel> FieldingOfsplit { get; set; }
         public virtual ICollection<FieldingPostViewModel> FieldingPost { get; set; }
         public virtual ICollection<HallOfFameViewModel> HallOfFame { get; set; }

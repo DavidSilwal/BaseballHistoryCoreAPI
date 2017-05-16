@@ -1,10 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace BaseballHistoryCore.Data.DataModels
 {
-    public partial class BaseballStatsContext : DbContext
+    public class BaseballStatsContext : DbContext
     {
         public virtual DbSet<AllstarFull> AllstarFull { get; set; }
         public virtual DbSet<Appearance> Appearances { get; set; }
@@ -16,7 +15,7 @@ namespace BaseballHistoryCore.Data.DataModels
         public virtual DbSet<BattingPost> BattingPost { get; set; }
         public virtual DbSet<CollegePlaying> CollegePlaying { get; set; }
         public virtual DbSet<Fielding> Fielding { get; set; }
-        public virtual DbSet<FieldingOF> FieldingOf { get; set; }
+        public virtual DbSet<FieldingOf> FieldingOf { get; set; }
         public virtual DbSet<FieldingOFsplit> FieldingOfsplit { get; set; }
         public virtual DbSet<FieldingPost> FieldingPost { get; set; }
         public virtual DbSet<HallOfFame> HallOfFame { get; set; }
@@ -36,7 +35,9 @@ namespace BaseballHistoryCore.Data.DataModels
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+#pragma warning disable 1030
             #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+#pragma warning restore 1030
             optionsBuilder.UseSqlServer(@"Server=.;Database=BaseballStats;Trusted_Connection=True;");
         }
 
@@ -103,17 +104,17 @@ namespace BaseballHistoryCore.Data.DataModels
 
                 entity.Property(e => e.YearId).HasColumnName("yearID");
 
-                entity.Property(e => e.G1b).HasColumnName("G_1b");
+                entity.Property(e => e.G1B).HasColumnName("G_1b");
 
-                entity.Property(e => e.G2b).HasColumnName("G_2b");
+                entity.Property(e => e.G2B).HasColumnName("G_2b");
 
-                entity.Property(e => e.G3b).HasColumnName("G_3b");
+                entity.Property(e => e.G3B).HasColumnName("G_3b");
 
                 entity.Property(e => e.GAll).HasColumnName("G_all");
 
                 entity.Property(e => e.GBatting).HasColumnName("G_batting");
 
-                entity.Property(e => e.GC).HasColumnName("G_c");
+                entity.Property(e => e.Gc).HasColumnName("G_c");
 
                 entity.Property(e => e.GCf).HasColumnName("G_cf");
 
@@ -125,7 +126,7 @@ namespace BaseballHistoryCore.Data.DataModels
 
                 entity.Property(e => e.GOf).HasColumnName("G_of");
 
-                entity.Property(e => e.GP).HasColumnName("G_p");
+                entity.Property(e => e.Gp).HasColumnName("G_p");
 
                 entity.Property(e => e.GPh).HasColumnName("G_ph");
 
@@ -331,9 +332,9 @@ namespace BaseballHistoryCore.Data.DataModels
 
                 entity.Property(e => e.So).HasColumnName("SO");
 
-                entity.Property(e => e._2b).HasColumnName("2B");
+                entity.Property(e => e._2B).HasColumnName("2B");
 
-                entity.Property(e => e._3b).HasColumnName("3B");
+                entity.Property(e => e._3B).HasColumnName("3B");
 
                 entity.HasOne(d => d.Player)
                     .WithMany(p => p.Batting)
@@ -395,9 +396,9 @@ namespace BaseballHistoryCore.Data.DataModels
 
                 entity.Property(e => e.So).HasColumnName("SO");
 
-                entity.Property(e => e._2b).HasColumnName("2B");
+                entity.Property(e => e._2B).HasColumnName("2B");
 
-                entity.Property(e => e._3b).HasColumnName("3B");
+                entity.Property(e => e._3B).HasColumnName("3B");
 
                 entity.HasOne(d => d.Player)
                     .WithMany(p => p.BattingPost)
@@ -494,7 +495,7 @@ namespace BaseballHistoryCore.Data.DataModels
                     .HasConstraintName("FK_Fielding_Teams");
             });
 
-            modelBuilder.Entity<FieldingOF>(entity =>
+            modelBuilder.Entity<FieldingOf>(entity =>
             {
                 entity.HasKey(e => new { e.PlayerId, e.YearId, e.Stint })
                     .HasName("PK_FieldingOF");
@@ -1296,9 +1297,9 @@ namespace BaseballHistoryCore.Data.DataModels
                     .HasColumnName("WSWin")
                     .HasMaxLength(1);
 
-                entity.Property(e => e._2b).HasColumnName("2B");
+                entity.Property(e => e._2B).HasColumnName("2B");
 
-                entity.Property(e => e._3b).HasColumnName("3B");
+                entity.Property(e => e._3B).HasColumnName("3B");
 
                 entity.HasOne(d => d.Franch)
                     .WithMany(p => p.Teams)

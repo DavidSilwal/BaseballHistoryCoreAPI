@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BaseballHistoryCore.Data.DataModels
+﻿namespace BaseballHistoryCore.Data.DataModels
 {
-    public partial class SeriesPost
+    public class SeriesPost
     {
         public string TeamIdwinner { get; set; }
         public string LgIdwinner { get; set; }

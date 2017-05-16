@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BaseballHistoryCore.API.ViewModels
+﻿namespace BaseballHistoryCore.API.ViewModels
 {
-    public partial class AwardsPlayerViewModel
+    public class AwardsPlayerViewModel
     {
         public string PlayerId { get; set; }
         public string LgId { get; set; }

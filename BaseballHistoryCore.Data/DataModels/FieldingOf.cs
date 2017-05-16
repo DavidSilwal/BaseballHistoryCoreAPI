@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BaseballHistoryCore.Data.DataModels
+﻿namespace BaseballHistoryCore.Data.DataModels
 {
-    public partial class FieldingOF
+    public class FieldingOf
     {
         public string PlayerId { get; set; }
         public short YearId { get; set; }

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BaseballHistoryCore.API.ViewModels
+﻿namespace BaseballHistoryCore.API.ViewModels
 {
-    public partial class AppearanceViewModel
+    public class AppearanceViewModel
     {
         public string PlayerId { get; set; }
         public string TeamId { get; set; }
@@ -14,10 +11,10 @@ namespace BaseballHistoryCore.API.ViewModels
         public short? GBatting { get; set; }
         public short? GDefense { get; set; }
         public short? GP { get; set; }
-        public short? GC { get; set; }
-        public short? G1b { get; set; }
-        public short? G2b { get; set; }
-        public short? G3b { get; set; }
+        public short? Gc { get; set; }
+        public short? G1B { get; set; }
+        public short? G2B { get; set; }
+        public short? G3B { get; set; }
         public short? GSs { get; set; }
         public short? GLf { get; set; }
         public short? GCf { get; set; }

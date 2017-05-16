@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace BaseballHistoryCore.Data.DataModels
 {
-    public partial class Master
+    public class Master
     {
         public Master()
         {
@@ -17,7 +16,7 @@ namespace BaseballHistoryCore.Data.DataModels
             BattingPost = new HashSet<BattingPost>();
             CollegePlaying = new HashSet<CollegePlaying>();
             Fielding = new HashSet<Fielding>();
-            FieldingOf = new HashSet<FieldingOF>();
+            FieldingOf = new HashSet<FieldingOf>();
             FieldingOfsplit = new HashSet<FieldingOFsplit>();
             FieldingPost = new HashSet<FieldingPost>();
             HallOfFame = new HashSet<HallOfFame>();
@@ -63,7 +62,7 @@ namespace BaseballHistoryCore.Data.DataModels
         public virtual ICollection<BattingPost> BattingPost { get; set; }
         public virtual ICollection<CollegePlaying> CollegePlaying { get; set; }
         public virtual ICollection<Fielding> Fielding { get; set; }
-        public virtual ICollection<FieldingOF> FieldingOf { get; set; }
+        public virtual ICollection<FieldingOf> FieldingOf { get; set; }
         public virtual ICollection<FieldingOFsplit> FieldingOfsplit { get; set; }
         public virtual ICollection<FieldingPost> FieldingPost { get; set; }
         public virtual ICollection<HallOfFame> HallOfFame { get; set; }

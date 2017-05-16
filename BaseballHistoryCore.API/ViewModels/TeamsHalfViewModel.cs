@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BaseballHistoryCore.API.ViewModels
+﻿namespace BaseballHistoryCore.API.ViewModels
 {
-    public partial class TeamsHalfViewModel
+    public class TeamsHalfViewModel
     {
         public string TeamId { get; set; }
         public string LgId { get; set; }

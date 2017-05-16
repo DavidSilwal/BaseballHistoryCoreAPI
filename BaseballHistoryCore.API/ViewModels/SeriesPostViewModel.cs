@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BaseballHistoryCore.API.ViewModels
+﻿namespace BaseballHistoryCore.API.ViewModels
 {
-    public partial class SeriesPostViewModel
+    public class SeriesPostViewModel
     {
         public string TeamIdwinner { get; set; }
         public string LgIdwinner { get; set; }

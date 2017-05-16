@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BaseballHistoryCore.Data.DataModels
+﻿namespace BaseballHistoryCore.Data.DataModels
 {
-    public partial class AwardsSharePlayer
+    public class AwardsSharePlayer
     {
         public string PlayerId { get; set; }
         public string LgId { get; set; }

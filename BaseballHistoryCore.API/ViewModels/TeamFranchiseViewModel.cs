@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace BaseballHistoryCore.API.ViewModels
 {
-    public partial class TeamFranchiseViewModel
+    public class TeamFranchiseViewModel
     {
         public string FranchId { get; set; }
         public string FranchName { get; set; }

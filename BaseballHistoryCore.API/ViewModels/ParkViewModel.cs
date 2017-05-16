@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace BaseballHistoryCore.API.ViewModels
 {
-    public partial class ParkViewModel
+    public class ParkViewModel
     {
         public int Id { get; set; }
         public string Parkalias { get; set; }

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BaseballHistoryCore.Data.DataModels
+﻿namespace BaseballHistoryCore.Data.DataModels
 {
-    public partial class HallOfFame
+    public class HallOfFame
     {
         public string PlayerId { get; set; }
         public short Yearid { get; set; }

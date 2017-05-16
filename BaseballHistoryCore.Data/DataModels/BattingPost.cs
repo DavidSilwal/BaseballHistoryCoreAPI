@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace BaseballHistoryCore.Data.DataModels
+﻿namespace BaseballHistoryCore.Data.DataModels
 {
-    public partial class BattingPost
+    public class BattingPost
     {
         public string PlayerId { get; set; }
         public string TeamId { get; set; }
@@ -14,8 +11,8 @@ namespace BaseballHistoryCore.Data.DataModels
         public short? Ab { get; set; }
         public short? R { get; set; }
         public short? H { get; set; }
-        public short? _2b { get; set; }
-        public short? _3b { get; set; }
+        public short? _2B { get; set; }
+        public short? _3B { get; set; }
         public short? Hr { get; set; }
         public short? Rbi { get; set; }
         public short? Sb { get; set; }

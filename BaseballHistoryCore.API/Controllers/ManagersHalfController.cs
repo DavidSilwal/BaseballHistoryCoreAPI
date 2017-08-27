@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
 using Microsoft.AspNetCore.Mvc;
+using BaseballHistoryCore.Data.DataModels;
 
 namespace BaseballHistoryCore.API.Controllers
 {
@@ -7,18 +10,26 @@ namespace BaseballHistoryCore.API.Controllers
     [Route("api/ManagersHalf")]
     public class ManagersHalfController : Controller
     {
+        private readonly BaseballStatsContext _context;
+
+        public ManagersHalfController(BaseballStatsContext context)
+        {
+            _context = context;
+        }
+
         // GET: api/ManagersHalf
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<ManagersHalf> Get()
         {
-            return new[] { "value1", "value2" };
+            return _context.ManagersHalf.ToList();
         }
 
         // GET: api/ManagersHalf/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("/api/ManagersHalf/{playerId}/{teamId}/{lgId}/{yearId}/{inseason}/{half}")]
+        public ManagersHalf Get([FromUri] string playerId, [FromUri] string teamId, [FromUri] string lgId, [FromUri] int yearId, [FromUri] int inseason, [FromUri] int half)
         {
-            return "value";
+            IQueryable<ManagersHalf> result = _context.ManagersHalf.Where(p => p.PlayerId == playerId && p.TeamId == teamId && p.LgId == lgId && p.YearId == yearId && p.Inseason == inseason && p.Half == half);
+            return result.FirstOrDefault();
         }
     }
 }

@@ -33,6 +33,10 @@ namespace BaseballHistoryCore.Data.DataModels
         public virtual DbSet<Team> Teams { get; set; }
         public virtual DbSet<TeamsHalf> TeamsHalf { get; set; }
 
+        public BaseballStatsContext(DbContextOptions<BaseballStatsContext> options)
+            : base(options)
+        { }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 #pragma warning disable 1030

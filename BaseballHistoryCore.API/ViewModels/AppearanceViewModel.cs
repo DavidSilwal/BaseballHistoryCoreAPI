@@ -10,7 +10,7 @@
         public short? Gs { get; set; }
         public short? GBatting { get; set; }
         public short? GDefense { get; set; }
-        public short? GP { get; set; }
+        public short? Gp { get; set; }
         public short? Gc { get; set; }
         public short? G1B { get; set; }
         public short? G2B { get; set; }

@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
 using Microsoft.AspNetCore.Mvc;
+using BaseballHistoryCore.Data.DataModels;
 
 namespace BaseballHistoryCore.API.Controllers
 {
@@ -7,18 +10,26 @@ namespace BaseballHistoryCore.API.Controllers
     [Route("api/FieldingPost")]
     public class FieldingPostController : Controller
     {
+        private readonly BaseballStatsContext _context;
+
+        public FieldingPostController(BaseballStatsContext context)
+        {
+            _context = context;
+        }
+
         // GET: api/FieldingPost
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<FieldingPost> Get()
         {
-            return new[] { "value1", "value2" };
+            return _context.FieldingPost.ToList();
         }
 
         // GET: api/FieldingPost/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("/api/FieldingPost/{playerId}/{teamId}/{lgId}/{yearId}/{round}/{pos}")]
+        public FieldingPost Get([FromUri] string playerId, [FromUri] string teamId, [FromUri] string lgId, [FromUri] int yearId, [FromUri] string round, [FromUri] string pos)
         {
-            return "value";
+            IQueryable<FieldingPost> result = _context.FieldingPost.Where(p => p.PlayerId == playerId && p.TeamId == teamId && p.LgId == lgId && p.YearId == yearId && p.Round == round && p.Pos == pos);
+            return result.FirstOrDefault();
         }
     }
 }

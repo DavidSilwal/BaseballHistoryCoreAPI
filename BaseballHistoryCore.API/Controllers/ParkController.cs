@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
 using Microsoft.AspNetCore.Mvc;
+using BaseballHistoryCore.Data.DataModels;
 
 namespace BaseballHistoryCore.API.Controllers
 {
@@ -7,18 +10,26 @@ namespace BaseballHistoryCore.API.Controllers
     [Route("api/Park")]
     public class ParkController : Controller
     {
+        private readonly BaseballStatsContext _context;
+
+        public ParkController(BaseballStatsContext context)
+        {
+            _context = context;
+        }
+
         // GET: api/Park
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Park> Get()
         {
-            return new[] { "value1", "value2" };
+            return _context.Parks.ToList();
         }
 
         // GET: api/Park/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("/api/Park/{id}")]
+        public Park Get([FromUri] int id)
         {
-            return "value";
+            IQueryable<Park> result = _context.Parks.Where(p => p.Id == id);
+            return result.FirstOrDefault();
         }
     }
 }

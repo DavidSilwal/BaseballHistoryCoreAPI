@@ -1,5 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
 using Microsoft.AspNetCore.Mvc;
+using BaseballHistoryCore.Data.DataModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace BaseballHistoryCore.API.Controllers
 {
@@ -7,18 +11,26 @@ namespace BaseballHistoryCore.API.Controllers
     [Route("api/AllstarFull")]
     public class AllstarFullController : Controller
     {
-        // GET: api/AllstarFull
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly BaseballStatsContext _context;
+
+        public AllstarFullController(BaseballStatsContext context)
         {
-            return new[] { "value1", "value2" };
+            _context = context;
         }
 
-        // GET: api/AllstarFull/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet]
+        public IEnumerable<AllstarFull> Get()
         {
-            return "value";
+            return _context.AllstarFull.ToList();
+        }
+
+        [HttpGet("/api/AllstarFull/{playerId}/{teamId}/{lgId}/{yearId}/{gameId}")]
+        public AllstarFull Get([FromUri] string playerId, [FromUri] string teamId, [FromUri] string lgId, [FromUri] int yearId, [FromUri] string gameId)
+        {
+            IQueryable<AllstarFull> result = _context.AllstarFull.Where(p =>
+                p.PlayerId == playerId && p.TeamId == teamId && p.LgId == lgId && p.YearId == yearId &&
+                p.GameId == gameId);
+            return result.FirstOrDefault();
         }
     }
 }

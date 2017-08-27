@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
 using Microsoft.AspNetCore.Mvc;
+using BaseballHistoryCore.Data.DataModels;
 
 namespace BaseballHistoryCore.API.Controllers
 {
@@ -7,18 +10,26 @@ namespace BaseballHistoryCore.API.Controllers
     [Route("api/AwardsManager")]
     public class AwardsManagerController : Controller
     {
+        private readonly BaseballStatsContext _context;
+
+        public AwardsManagerController(BaseballStatsContext context)
+        {
+            _context = context;
+        }
+
         // GET: api/AwardsManager
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<AwardsManager> Get()
         {
-            return new[] { "value1", "value2" };
+            return _context.AwardsManagers.ToList();
         }
 
         // GET: api/AwardsManager/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("/api/AwardsManager/{playerId}/{lgId}/{yearId}/{awardId}")]
+        public AwardsManager Get([FromUri] string playerId, [FromUri] string lgId, [FromUri] int yearId, [FromUri] string awardId)
         {
-            return "value";
+            IQueryable<AwardsManager> result = _context.AwardsManagers.Where(p => p.PlayerId == playerId && p.LgId == lgId && p.YearId == yearId && p.AwardId == awardId);
+            return result.FirstOrDefault();
         }
     }
 }

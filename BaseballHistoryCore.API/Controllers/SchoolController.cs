@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
 using Microsoft.AspNetCore.Mvc;
+using BaseballHistoryCore.Data.DataModels;
 
 namespace BaseballHistoryCore.API.Controllers
 {
@@ -7,18 +10,32 @@ namespace BaseballHistoryCore.API.Controllers
     [Route("api/School")]
     public class SchoolController : Controller
     {
+        private readonly BaseballStatsContext _context;
+
+        public SchoolController(BaseballStatsContext context)
+        {
+            _context = context;
+        }
+
         // GET: api/School
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<School> Get()
         {
-            return new[] { "value1", "value2" };
+            return _context.Schools.ToList();
         }
 
         // GET: api/School/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("/api/School/{playerId}/{teamId}/{lgId}/{yearId}")]
+        public School Get([FromUri] string schoolId)
         {
-            return "value";
+            IQueryable<School> result = _context.Schools.Where(p => p.SchoolId == schoolId);
+            return result.FirstOrDefault();
+        }
+
+        [HttpGet("/api/School/{schoolID})/CollegePlaying")]
+        public IQueryable<CollegePlaying> GetCollegePlaying([FromUri] string schoolId)
+        {
+            return _context.Schools.Where(p => p.SchoolId == schoolId).SelectMany(p => p.CollegePlaying);
         }
     }
 }
